@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FDA Rx Regulation Academy</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════
+       LANDING / HOME SCREEN
+  ══════════════════════════════════════════ -->
+  <div id="screen-home" class="screen active">
+    <div class="home-bg">
+      <div class="home-content">
+        <div class="home-badge">OFFICIAL FDA REGULATORY TRAINING</div>
+        <h1 class="home-title">FDA Rx Regulation<br><span>Academy</span></h1>
+        <p class="home-subtitle">
+          Master the rules governing prescription drug promotion and labeling.<br>
+          Grounded in real CFR citations, OPDP guidance, and USPI requirements.
+        </p>
+        <div class="home-stats">
+          <div class="stat">
+            <span class="stat-number">10</span>
+            <span class="stat-label">Modules</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">57</span>
+            <span class="stat-label">Slides</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">31</span>
+            <span class="stat-label">Quiz Questions</span>
+          </div>
+        </div>
+        <button class="btn-start" onclick="App.showCourseMap()">
+          <span>Start Learning</span>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+        <div class="home-topics">
+          <span>USPI & CFR 201.56/201.57</span>
+          <span>PLLR Pregnancy Labeling</span>
+          <span>OPDP Rules & Enforcement</span>
+          <span>Fair Balance</span>
+          <span>DTC Advertising</span>
+          <span>Off-Label & SIUU</span>
+          <span>Accelerated Approval</span>
+          <span>Comparative Advertising</span>
+          <span>HCEI & Payer Communications</span>
+          <span>Social Media Rules</span>
+          <span>Warning Letters</span>
+          <span>Park Doctrine</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       COURSE MAP
+  ══════════════════════════════════════════ -->
+  <div id="screen-map" class="screen">
+    <header class="top-bar">
+      <button class="btn-icon" onclick="App.showHome()">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      </button>
+      <span class="top-bar-title">FDA Rx Regulation Academy</span>
+      <div class="global-progress">
+        <span id="global-progress-text">0% Complete</span>
+        <div class="progress-bar-small">
+          <div class="progress-bar-fill" id="global-progress-bar" style="width:0%"></div>
+        </div>
+      </div>
+    </header>
+
+    <main class="map-main">
+      <div class="map-header">
+        <h2>Your Learning Path</h2>
+        <p>Complete all modules to earn your FDA Regulation Certificate</p>
+      </div>
+      <div class="modules-grid" id="modules-grid">
+        <!-- Dynamically injected by modules.js -->
+      </div>
+    </main>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       LESSON PLAYER
+  ══════════════════════════════════════════ -->
+  <div id="screen-lesson" class="screen">
+    <header class="lesson-header">
+      <button class="btn-icon" onclick="App.showCourseMap()">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <div class="lesson-header-center">
+        <span id="lesson-module-label" class="lesson-module-label"></span>
+        <span id="lesson-title" class="lesson-title-small"></span>
+      </div>
+      <div class="lesson-slide-counter">
+        <span id="slide-current">1</span> / <span id="slide-total">1</span>
+      </div>
+    </header>
+
+    <!-- Progress bar -->
+    <div class="lesson-progress-track">
+      <div class="lesson-progress-fill" id="lesson-progress-fill"></div>
+    </div>
+
+    <!-- ── Audio Guide Bar ─────────────────────── -->
+    <div class="audio-bar" id="audio-bar">
+
+      <!-- Play / Pause -->
+      <button class="audio-play-btn" id="audio-play-btn"
+              onclick="AudioGuide.toggle()" title="Play narration">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+          <polygon points="5,3 19,12 5,21"/>
+        </svg>
+      </button>
+
+      <!-- Waveform + Label -->
+      <div class="audio-identity">
+        <div class="audio-waveform" id="audio-waveform">
+          <span></span><span></span><span></span><span></span><span></span>
+        </div>
+        <span class="audio-status-text" id="audio-status-text">Audio Guide</span>
+      </div>
+
+      <!-- Speed selector -->
+      <div class="audio-speed-group">
+        <button class="rate-btn active" data-rate="1"    onclick="AudioGuide.setRate(1)">1×</button>
+        <button class="rate-btn"        data-rate="1.25" onclick="AudioGuide.setRate(1.25)">1.25×</button>
+        <button class="rate-btn"        data-rate="1.5"  onclick="AudioGuide.setRate(1.5)">1.5×</button>
+        <button class="rate-btn"        data-rate="0.75" onclick="AudioGuide.setRate(0.75)">0.75×</button>
+      </div>
+
+      <!-- Auto-read toggle -->
+      <button class="audio-chip" id="auto-play-btn"
+              onclick="AudioGuide.toggleAutoPlay()"
+              title="Enable auto-read on each slide">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <polygon points="5,3 19,12 5,21"/>
+          <line x1="19" y1="3" x2="19" y2="21"/>
+        </svg>
+        <span class="ap-label">Auto</span>
+      </button>
+
+      <!-- Voice / Settings -->
+      <button class="audio-chip" id="audio-settings-btn"
+              onclick="AudioGuide.toggleSettings()" title="Voice settings">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <circle cx="12" cy="12" r="3"/>
+          <path d="M19.07 4.93a10 10 0 0 1 0 14.14M5.93 19.07a10 10 0 0 1 0-14.14"/>
+        </svg>
+        <span>Voice</span>
+      </button>
+    </div>
+
+    <!-- Audio Settings Panel (hidden by default) -->
+    <div class="audio-settings-panel" id="audio-settings-panel">
+      <div class="audio-setting-row">
+        <label class="audio-setting-label">Voice</label>
+        <select id="voice-select" class="voice-select"
+                onchange="AudioGuide.setVoice(this.value)">
+          <option>Loading voices…</option>
+        </select>
+      </div>
+      <div class="audio-setting-row">
+        <label class="audio-setting-label">Speed</label>
+        <div class="speed-buttons">
+          <button class="rate-btn-lg active" data-rate="0.75" onclick="AudioGuide.setRate(0.75)">0.75×</button>
+          <button class="rate-btn-lg active" data-rate="1"    onclick="AudioGuide.setRate(1)">1×</button>
+          <button class="rate-btn-lg"        data-rate="1.25" onclick="AudioGuide.setRate(1.25)">1.25×</button>
+          <button class="rate-btn-lg"        data-rate="1.5"  onclick="AudioGuide.setRate(1.5)">1.5×</button>
+          <button class="rate-btn-lg"        data-rate="1.75" onclick="AudioGuide.setRate(1.75)">1.75×</button>
+          <button class="rate-btn-lg"        data-rate="2"    onclick="AudioGuide.setRate(2)">2×</button>
+        </div>
+      </div>
+      <p class="audio-tip">
+        💡 Tip: Turn on <strong>Auto</strong> to have each slide read aloud automatically as you navigate.
+      </p>
+    </div>
+
+    <!-- Toast notification -->
+    <div class="audio-toast" id="audio-toast"></div>
+
+    <!-- Slide dots -->
+    <div class="slide-dots" id="slide-dots"></div>
+
+    <!-- Slide container -->
+    <div class="slide-wrapper" id="slide-wrapper">
+      <div class="slide-container" id="slide-container">
+        <!-- Slides injected here -->
+      </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="lesson-nav">
+      <button class="btn-nav btn-prev" id="btn-prev" onclick="App.prevSlide()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+        Previous
+      </button>
+      <button class="btn-nav btn-next" id="btn-next" onclick="App.nextSlide()">
+        Next
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       QUIZ SCREEN
+  ══════════════════════════════════════════ -->
+  <div id="screen-quiz" class="screen">
+    <header class="top-bar">
+      <button class="btn-icon" onclick="Quiz.exitQuiz()">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+      <span id="quiz-module-label" class="top-bar-title"></span>
+      <div class="quiz-score-badge" id="quiz-score-badge">0 / 0</div>
+    </header>
+
+    <div class="quiz-body" id="quiz-body">
+      <!-- Question injected here -->
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       COMPLETION SCREEN
+  ══════════════════════════════════════════ -->
+  <div id="screen-complete" class="screen">
+    <div class="complete-content">
+      <div class="complete-icon">
+        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      </div>
+      <h1>Course Complete!</h1>
+      <p class="complete-sub">You've mastered FDA Rx Drug Regulation</p>
+      <div class="complete-cert" id="complete-cert">
+        <div class="cert-inner">
+          <div class="cert-title">Certificate of Completion</div>
+          <div class="cert-name">FDA Rx Regulation Academy</div>
+          <div class="cert-modules" id="cert-modules"></div>
+          <div class="cert-date" id="cert-date"></div>
+        </div>
+      </div>
+      <div class="complete-actions">
+        <button class="btn-start" onclick="App.showCourseMap()">Review Modules</button>
+        <button class="btn-outline" onclick="App.showHome()">Back to Home</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/modules.js"></script>
+  <script src="js/quiz.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
