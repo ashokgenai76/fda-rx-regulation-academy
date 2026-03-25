@@ -101,39 +101,83 @@ const COURSE_MODULES = [
         title: 'The 17 Required Sections of the Full PI',
         body: `
           <p style="font-size:14px;color:#475569;line-height:1.7;margin-bottom:16px;">
-            Under <strong>21 CFR 201.57</strong>, the Full Prescribing Information must include these sections in order:
+            Under <strong>21 CFR 201.57</strong>, every Full Prescribing Information must contain these 17 sections in the exact order shown. Promotional materials must be consistent with the content of each applicable section.
           </p>
-          <div class="cards-grid">
-            <div class="info-card">
-              <h4>Section 1 — Indications & Usage</h4>
-              <p>What the drug is approved to treat. This is the cornerstone of all promotional claims.</p>
-            </div>
-            <div class="info-card orange">
-              <h4>Section 2 — Dosage & Administration</h4>
-              <p>Recommended doses, routes of administration, preparation instructions.</p>
-            </div>
-            <div class="info-card red">
-              <h4>Section 4 — Contraindications</h4>
-              <p>Situations in which the drug must NOT be used. Must be in the Highlights.</p>
-            </div>
-            <div class="info-card red">
-              <h4>Section 5 — Warnings & Precautions</h4>
-              <p>Serious risks that require special monitoring or dosage adjustment.</p>
-            </div>
-            <div class="info-card green">
-              <h4>Section 6 — Adverse Reactions</h4>
-              <p>All adverse reactions observed in clinical trials at ≥ 1% incidence.</p>
-            </div>
-            <div class="info-card cyan">
-              <h4>Section 8 — Use in Specific Populations</h4>
-              <p>Pregnancy, lactation, pediatrics, geriatrics, and renal/hepatic impairment.</p>
-            </div>
-          </div>
-          <div class="alert-box warning">
+          <div class="alert-box warning" style="margin-bottom:16px;">
             <div class="alert-box-icon">⚠️</div>
             <div class="alert-box-content">
-              <strong>Section 5.1 — Boxed Warning ("Black Box")</strong>
-              <p>If present, the most serious warning must appear prominently in a box at the top of the Warnings section AND in the Highlights. Required to be referenced in all promotional materials that include the indication.</p>
+              <strong>Boxed Warning (§201.57(c)(1))</strong>
+              <p>If present, the most serious warning appears in a box before Section 1. Must be reproduced in the Highlights and referenced in all promotional pieces that include the indication.</p>
+            </div>
+          </div>
+          <div class="cards-grid">
+            <div class="info-card">
+              <h4>1 — Indications &amp; Usage</h4>
+              <p>The approved indication(s): what the drug is cleared to treat, including any approved subpopulations. The absolute boundary for promotional claims.</p>
+            </div>
+            <div class="info-card orange">
+              <h4>2 — Dosage &amp; Administration</h4>
+              <p>Recommended dose, route, frequency, preparation instructions, and dose modifications. Promoters may not imply doses outside this section.</p>
+            </div>
+            <div class="info-card green">
+              <h4>3 — Dosage Forms &amp; Strengths</h4>
+              <p>All available forms (tablet, capsule, injection, etc.) and available strengths. Required disclosure for complete product identification.</p>
+            </div>
+            <div class="info-card red">
+              <h4>4 — Contraindications</h4>
+              <p>Situations in which the drug must NOT be used. Must appear in the Highlights and in the body of all promotional pieces per §202.1(e)(3).</p>
+            </div>
+            <div class="info-card red">
+              <h4>5 — Warnings &amp; Precautions</h4>
+              <p>Serious risks requiring special monitoring, dose adjustment, or clinical intervention. Subsection 5.1 is the Boxed Warning if applicable.</p>
+            </div>
+            <div class="info-card orange">
+              <h4>6 — Adverse Reactions</h4>
+              <p>All adverse reactions from clinical trials at ≥1% incidence (or lower if clinically meaningful). Fair balance in promotion must reflect this section accurately.</p>
+            </div>
+            <div class="info-card cyan">
+              <h4>7 — Drug Interactions</h4>
+              <p>Clinically significant interactions with other drugs, foods, or laboratory tests. Must be reflected in promotional risk disclosures where relevant.</p>
+            </div>
+            <div class="info-card">
+              <h4>8 — Use in Specific Populations</h4>
+              <p>Pregnancy (PLLR §8.1), Lactation (§8.2), Females &amp; Males of Reproductive Potential (§8.3), Pediatric (§8.4), Geriatric (§8.5), Renal/Hepatic impairment.</p>
+            </div>
+            <div class="info-card orange">
+              <h4>9 — Drug Abuse &amp; Dependence</h4>
+              <p>Required for controlled substances: Schedule designation (§9.1), abuse potential (§9.2), and dependence data (§9.3). Schedule must be disclosed in promotion.</p>
+            </div>
+            <div class="info-card red">
+              <h4>10 — Overdosage</h4>
+              <p>Signs, symptoms, and management of overdose. Not typically featured in promotion but must not be contradicted.</p>
+            </div>
+            <div class="info-card green">
+              <h4>11 — Description</h4>
+              <p>Drug's chemical name, structural formula, pharmacological class, and physical/chemical characteristics. Used for accurate product identification.</p>
+            </div>
+            <div class="info-card cyan">
+              <h4>12 — Clinical Pharmacology</h4>
+              <p>Mechanism of action (§12.1), pharmacodynamics (§12.2), and pharmacokinetics (§12.3). MOA claims in promotion must align with §12.1.</p>
+            </div>
+            <div class="info-card">
+              <h4>13 — Nonclinical Toxicology</h4>
+              <p>Carcinogenesis, mutagenesis, and impairment of fertility data (§13.1). Animal data relevant to human safety risks.</p>
+            </div>
+            <div class="info-card orange">
+              <h4>14 — Clinical Studies</h4>
+              <p>The pivotal trials that supported approval: design, endpoints, patient population, and results. All efficacy claims in promotion must be rooted here.</p>
+            </div>
+            <div class="info-card green">
+              <h4>15 — References</h4>
+              <p>Published scientific literature cited in the labeling. Included only when referenced within the PI; not required in every label.</p>
+            </div>
+            <div class="info-card cyan">
+              <h4>16 — How Supplied / Storage &amp; Handling</h4>
+              <p>Package descriptions, NDC numbers, storage conditions, and handling precautions. Required for product identification and dispensing accuracy.</p>
+            </div>
+            <div class="info-card red">
+              <h4>17 — Patient Counseling Information</h4>
+              <p>Key information patients need: serious risks, instructions for use, common side effects. Must be provided to patients; FDA-approved Medication Guide attached here if required.</p>
             </div>
           </div>
         `

@@ -157,6 +157,32 @@
 
     <!-- Audio Settings Panel (hidden by default) -->
     <div class="audio-settings-panel" id="audio-settings-panel">
+
+      <!-- Provider -->
+      <div class="audio-setting-row">
+        <label class="audio-setting-label">Engine</label>
+        <select id="provider-select" class="voice-select"
+                onchange="AudioGuide.setProvider(this.value)">
+          <option value="browser">Browser TTS (free)</option>
+          <option value="elevenlabs">ElevenLabs (human-quality)</option>
+          <option value="openai">OpenAI TTS (human-quality)</option>
+        </select>
+      </div>
+
+      <!-- API Key (hidden for browser TTS) -->
+      <div class="audio-setting-row" id="api-key-row" style="display:none;">
+        <label class="audio-setting-label">API Key</label>
+        <div class="api-key-group">
+          <input type="password" id="api-key-input" class="api-key-input"
+                 placeholder="Paste your key here…" />
+          <button class="btn-save-key" onclick="AudioGuide.saveApiKey()">Save</button>
+        </div>
+      </div>
+
+      <!-- Provider hint -->
+      <p class="provider-hint" id="provider-hint" style="display:none;"></p>
+
+      <!-- Voice -->
       <div class="audio-setting-row">
         <label class="audio-setting-label">Voice</label>
         <select id="voice-select" class="voice-select"
@@ -164,19 +190,24 @@
           <option>Loading voices…</option>
         </select>
       </div>
+
+      <!-- Speed -->
       <div class="audio-setting-row">
         <label class="audio-setting-label">Speed</label>
         <div class="speed-buttons">
-          <button class="rate-btn-lg active" data-rate="0.75" onclick="AudioGuide.setRate(0.75)">0.75×</button>
-          <button class="rate-btn-lg active" data-rate="1"    onclick="AudioGuide.setRate(1)">1×</button>
-          <button class="rate-btn-lg"        data-rate="1.25" onclick="AudioGuide.setRate(1.25)">1.25×</button>
-          <button class="rate-btn-lg"        data-rate="1.5"  onclick="AudioGuide.setRate(1.5)">1.5×</button>
-          <button class="rate-btn-lg"        data-rate="1.75" onclick="AudioGuide.setRate(1.75)">1.75×</button>
-          <button class="rate-btn-lg"        data-rate="2"    onclick="AudioGuide.setRate(2)">2×</button>
+          <button class="rate-btn-lg" data-rate="0.75" onclick="AudioGuide.setRate(0.75)">0.75×</button>
+          <button class="rate-btn-lg active" data-rate="1" onclick="AudioGuide.setRate(1)">1×</button>
+          <button class="rate-btn-lg" data-rate="1.25" onclick="AudioGuide.setRate(1.25)">1.25×</button>
+          <button class="rate-btn-lg" data-rate="1.5"  onclick="AudioGuide.setRate(1.5)">1.5×</button>
+          <button class="rate-btn-lg" data-rate="1.75" onclick="AudioGuide.setRate(1.75)">1.75×</button>
+          <button class="rate-btn-lg" data-rate="2"    onclick="AudioGuide.setRate(2)">2×</button>
         </div>
       </div>
+
       <p class="audio-tip">
-        💡 Tip: Turn on <strong>Auto</strong> to have each slide read aloud automatically as you navigate.
+        💡 <strong>ElevenLabs</strong> &amp; <strong>OpenAI</strong> produce natural, human-sounding narration.
+        Get a free key at <strong>elevenlabs.io</strong> or <strong>platform.openai.com</strong>.
+        Turn on <strong>Auto</strong> to read each slide automatically.
       </p>
     </div>
 

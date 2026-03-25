@@ -1323,3 +1323,53 @@ html, body {
   opacity: 1;
   transform: translateX(-50%) translateY(0);
 }
+
+/* ─── Provider / API Key UI ──────────────────────── */
+.api-key-group {
+  display: flex;
+  gap: 6px;
+  flex: 1;
+}
+.api-key-input {
+  flex: 1;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 8px;
+  color: #e2e8f0;
+  font-size: 12px;
+  padding: 5px 10px;
+  outline: none;
+  min-width: 0;
+}
+.api-key-input::placeholder { color: #475569; }
+.api-key-input:focus { border-color: var(--primary); }
+.btn-save-key {
+  padding: 5px 12px;
+  border-radius: 8px;
+  border: none;
+  background: var(--primary);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: opacity 0.15s;
+}
+.btn-save-key:hover { opacity: 0.85; }
+
+.provider-hint {
+  font-size: 11px;
+  color: #64748b;
+  margin: 2px 0 4px;
+  line-height: 1.5;
+}
+.provider-hint a { color: var(--primary); text-decoration: none; }
+
+/* ─── Spin animation (used for loading indicator) ── */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+.spin {
+  display: inline-block;
+  animation: spin 0.8s linear infinite;
+}
