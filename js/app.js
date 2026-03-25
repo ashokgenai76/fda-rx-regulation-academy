@@ -128,6 +128,10 @@ const App = (() => {
     const container = document.getElementById('slide-container');
     container.style.transform = `translateX(-${currentSlide * 100}%)`;
 
+    // Reset scroll to top for the new slide
+    const wrapper = document.getElementById('slide-wrapper');
+    if (wrapper) wrapper.scrollTop = 0;
+
     // Update counters
     document.getElementById('slide-current').textContent = currentSlide + 1;
     document.getElementById('slide-total').textContent = totalSlides;

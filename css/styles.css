@@ -459,18 +459,19 @@ html, body {
 /* ─── Slide Wrapper ──────────────────────────────── */
 .slide-wrapper {
   flex: 1;
-  overflow: hidden;
+  overflow-x: hidden;   /* clip horizontal for slide transitions */
+  overflow-y: auto;     /* allow the wrapper itself to scroll vertically */
   position: relative;
+  -webkit-overflow-scrolling: touch;
 }
 .slide-container {
   display: flex;
-  height: 100%;
+  align-items: flex-start;  /* don't stretch slides to tallest sibling */
   transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .slide {
   min-width: 100%;
-  height: 100%;
-  overflow-y: auto;
+  /* No fixed height — let content determine height */
   padding: 28px 24px 100px;
 }
 
